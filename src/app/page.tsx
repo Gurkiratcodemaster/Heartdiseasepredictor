@@ -71,8 +71,12 @@ export default function Home() {
 
       const data: { prediction: number } = await res.json();
       setPrediction(data.prediction);
-    } catch (err: any) {
-      setError(err?.message ?? "An error occurred");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An error occurred");
+      }
     } finally {
       setLoading(false);
     }
