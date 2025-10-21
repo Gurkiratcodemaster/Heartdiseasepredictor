@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root {
+  /* Heart themed palette */
+  --primary: #e11d48; /* rose-600 / heart red */
+  --primary-600: #be123c;
+  --muted: #6b7280; /* keep muted for labels */
+  --card-bg: #fff5f6; /* very light rose */
+  --success: #16a34a;
+  --danger: #991b1b;
+  --accent: #ff6b81; /* pink accent */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+  background: linear-gradient(180deg, #fff7f8, var(--card-bg));
+  border: 1px solid rgba(225,29,72,0.06);
+  box-shadow: 0 6px 18px rgba(225,29,72,0.06);
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(225,29,72,0.08);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(225,29,72,0.12);
+}
+
+.btn-primary[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.label { color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+.muted { color: var(--muted); }
+.result-card { background: linear-gradient(90deg, rgba(255,239,241,0.95), rgba(255,245,247,0.98)); border-left: 6px solid var(--primary); padding: 14px; border-radius: 10px; color: var(--primary-600); box-shadow: 0 8px 24px rgba(225,29,72,0.06); }
+.result-card h3 { margin: 0 0 6px 0; }
+.error { color: var(--danger); font-weight: 600; }
+.field { display:flex; flex-direction:column; }
+
+input, select { padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(15,23,42,0.06); background: #fff; transition: box-shadow 160ms, border-color 160ms; }
+input:focus, select:focus { outline: none; box-shadow: 0 6px 18px rgba(225,29,72,0.08); border-color: var(--primary-600); }
+
+/* Heartbeat animation for icons */
+.heart {
+  width: 20px; height: 20px; display:inline-block; color: #fff;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+
+.heart-beat { animation: heartbeat 1.2s infinite; }
+
+.prediction-badge { display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; font-weight:700; }
+
